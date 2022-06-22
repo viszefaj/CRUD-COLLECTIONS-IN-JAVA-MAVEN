@@ -11,14 +11,13 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import java.util.Date;
 import java.util.List;
 
 
-@ComponentScan("com.web.springboot.demo")
-@Configuration
-@EnableAutoConfiguration
+@SpringBootApplication(scanBasePackageClasses = {Crud_Op.class, Crud_Op2.class})
 public class SpringbootDemoApplication implements CommandLineRunner {
 
 
