@@ -40,5 +40,6 @@ public class Employee extends Applicant {
         isExecutive = executive;
     }
 
+
 }
 

@@ -17,10 +17,11 @@ public class main {
                 new Applicant("Wesley", "Lim", EmployeeType.executive)
         );
 
-        List<o.before.Employee> employees = new ArrayList<>();
-        o.before.Accounts accountProcessor = new Accounts();
+        List<Employee> employees = new ArrayList<>();
+        Accounts accountProcessor = new Accounts();
 
         applicants.forEach(person -> employees.add(accountProcessor.create(person)));
+
 
 
     }
