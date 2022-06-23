@@ -4,17 +4,10 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        Scanner reader = new Scanner(System.in);
-
-        System.out.println("Welcome to my application");
 
         s.after.PersonExists person = new PersonExists();
 
-        System.out.println("What is your first name: ");
-        person.setFirstName(reader.next());
-
-        System.out.println("What is your last name: ");
-        person.setLastName(reader.next());
+        person.AddPerson(person);
 
         person.Personexist(person);
 

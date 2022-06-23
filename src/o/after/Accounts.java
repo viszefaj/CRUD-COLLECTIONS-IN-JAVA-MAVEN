@@ -1,8 +1,8 @@
 package o.after;
 
 
-public class Accounts {
 
+public class Accounts extends Employee {
     public Employee create(Employee employee,Applicant person) {
         employee.getFirstName().equals(person.getFirstName());
         employee.getLastName().equals(person.getLastName());
@@ -22,6 +22,5 @@ public class Accounts {
 
         return employee;
     }
-
 
 }
