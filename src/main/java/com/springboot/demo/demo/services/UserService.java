@@ -29,4 +29,12 @@ public class UserService {
         return userRepository.save(updatedUser);
     }
 
+    public User getUser(Long id) throws Exception {
+        Optional<User> retrieveUser = userRepository.findById(id);
+        if (retrieveUser.isEmpty()){
+            throw new Exception("User does not exist");
+        }
+        return retrieveUser.get();
+    }
+
 }
