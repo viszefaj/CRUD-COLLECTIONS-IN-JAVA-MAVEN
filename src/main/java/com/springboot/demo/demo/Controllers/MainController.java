@@ -22,7 +22,6 @@ public class MainController {
     {
         return userService.getAllUsers();
     }
-    //Search S
     //Post a user
     @PostMapping("/create")
     public String createUser(
