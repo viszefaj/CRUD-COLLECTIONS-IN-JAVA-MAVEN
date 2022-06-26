@@ -1,40 +1,45 @@
 package com.springboot.demo.demo.services;
 
-import com.springboot.demo.demo.Entities.Spid;
 import com.springboot.demo.demo.Entities.User;
+import com.springboot.demo.demo.Exceptions.NoPersonFoundException;
 import com.springboot.demo.demo.Repository.UserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 @Service
 public class UserService {
-    @Autowired
+
     UserRepository userRepository;
 
-    public User createUser(User user){
+    UserService(UserRepository userRepository){
+        this.userRepository=userRepository;
+    }
+    public User createUser(User user) throws Exception {
+        Optional<User>  findIfPersonExists = userRepository.findByName(user.getName());
+
+        if(findIfPersonExists.isPresent()){
+            throw new NoPersonFoundException("User exists");
+        }
         return userRepository.save(user);
     }
-
-    public User editUser(long id, User user) throws Exception{
-        Optional<User> findUser = userRepository.findById(id);
-        if (findUser.isEmpty() || findUser == null){
-            throw new Exception("User does not exist");
-        }
-        findUser.get().setName(user.getName());
-        findUser.get().setSurname(user.getSurname());
-        User updatedUser =userRepository.save(findUser.get());
-        return userRepository.save(updatedUser);
+    public List<User> getAllUsers()
+    {
+        List<User> users= new ArrayList<User>();
+        userRepository.findAll().forEach(user1-> users.add(user1));
+        return users;
     }
 
-    public User getUser(Long id) throws Exception {
-        Optional<User> retrieveUser = userRepository.findById(id);
-        if (retrieveUser.isEmpty()){
-            throw new Exception("User does not exist");
+    public void deleteUser(long id) throws Exception {
+        Optional<User> findIfPersonExists = userRepository.findById(id);
+
+        if(findIfPersonExists.isEmpty()) {
+            throw new Exception("User doesnt exists");
         }
-        return retrieveUser.get();
+        userRepository.findById(id);
     }
+
 
 }

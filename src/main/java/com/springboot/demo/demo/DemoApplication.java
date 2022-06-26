@@ -12,19 +12,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class DemoApplication implements CommandLineRunner {
-    @Autowired
-    UserService userService;
-	@Autowired
-	SpidService spidService;
-
+public class DemoApplication{
     public static void main(String[] args) {
         SpringApplication.run(DemoApplication.class, args);
-    }
-
-    @Override
-    public void run(String... args) throws Exception {
-        System.out.println(userService.createUser(new User("elvis","","","","","")));
-		System.out.println(spidService.createSpid(new Spid(SpidStatus.PENDING, Type.LEVEL_2, new User("elvis","","","","",""))));
     }
 }
